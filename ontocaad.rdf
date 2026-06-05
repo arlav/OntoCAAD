@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:oc="https://w3id.org/ontocaad#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Details">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Details</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasAgentRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has agent role</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Agent"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#AgentRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact_SketchupImage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:label xml:lang="en">Sketchup model line drawing</rdfs:label>
+    <oc:hasArtefactType rdf:resource="https://w3id.org/ontocaad#AT_Digital3DModel"/>
+    <oc:hasDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualVectorial"/>
+    <oc:isDigital rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isDigital>
+    <oc:isIterative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isIterative>
+    <oc:isExternal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isExternal>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Geometry"/>
+    <oc:createdBy rdf:resource="https://w3id.org/ontocaad#Designer_Lead"/>
+    <oc:createdInStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Designer_Colleague1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Person"/>
+    <rdfs:label xml:lang="en">Colleague Designer</rdfs:label>
+    <oc:hasRole rdf:resource="https://w3id.org/ontocaad#Role_Designer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DesignStage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">DesignStage</rdfs:label>
+    <skos:definition xml:lang="en">Different stages in the architectural design process.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Designer_Lead">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Person"/>
+    <rdfs:label xml:lang="en">Lead Designer</rdfs:label>
+    <oc:hasRole rdf:resource="https://w3id.org/ontocaad#Role_Designer"/>
+    <oc:reframes rdf:resource="https://w3id.org/ontocaad#Problem_FacadeMateriality"/>
+    <oc:interacts rdf:resource="https://w3id.org/ontocaad#Agent_DiffusionModel"/>
+    <oc:interacts rdf:resource="https://w3id.org/ontocaad#Designer_Colleague1"/>
+    <oc:interprets rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:interprets rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:interprets rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+    <oc:reasons rdf:resource="https://w3id.org/ontocaad#Decision_VermilionCornice"/>
+    <oc:makes rdf:resource="https://w3id.org/ontocaad#Decision_VermilionCornice"/>
+    <oc:implements rdf:resource="https://w3id.org/ontocaad#Decision_VermilionCornice"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_BillOfQuantities">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Bill of Quantities</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#State_SketchupModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ProjectState"/>
+    <rdfs:label xml:lang="en">Sketchup model of residential building</rdfs:label>
+    <oc:stateDescription xml:lang="en">3D Sketchup model representing current design state.</oc:stateDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Materiality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Materiality</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_Photograph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Photograph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#interprets">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">interprets</rdfs:label>
+    <rdfs:comment xml:lang="en">An actor uses analytical techniques to extract design features from
+    artefacts. Person can analyse visually; Agent can use ML techniques. When Agent is a
+    diffusion model, interpretations can be textual, visual, or spatial in nature.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Feature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AgentRole_DecisionMaker">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#AgentRole"/>
+    <rdfs:label xml:lang="en">Decision Maker</rdfs:label>
+    <skos:definition xml:lang="en">Deciding, aligned with epistemic pipeline human [6-7], machine [7].</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#interacts">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:label xml:lang="en">interacts</rdfs:label>
+    <rdfs:comment xml:lang="en">Actors can interact with one another; be it instances of Person or Agent.
+    The interact() function can be programmed differently for different Agent instances.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Actor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AgentRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AgentRole</rdfs:label>
+    <skos:definition xml:lang="en">Different roles an Agent can have within the design process.
+    Aligned with the epistemic pipeline categories: reframing information,
+    internal reasoning, and deciding.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact_FacadeVariant2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:label xml:lang="en">Facade variant 2 — grey concrete</rdfs:label>
+    <oc:hasArtefactType rdf:resource="https://w3id.org/ontocaad#AT_GeneratedImage"/>
+    <oc:hasDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualRaster"/>
+    <oc:isDigital rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isDigital>
+    <oc:isIterative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isIterative>
+    <oc:isExternal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isExternal>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:createdBy rdf:resource="https://w3id.org/ontocaad#Agent_DiffusionModel"/>
+    <oc:createdInStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DT_VisualVectorial">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DataType"/>
+    <rdfs:label xml:lang="en">Visual - Vectorial</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Agent_DiffusionModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Agent"/>
+    <rdfs:label xml:lang="en">Diffusion Model Agent</rdfs:label>
+    <oc:hasAgentRole rdf:resource="https://w3id.org/ontocaad#AgentRole_Reasoner"/>
+    <oc:hasAgentDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualRaster"/>
+    <oc:hasAgentDataType rdf:resource="https://w3id.org/ontocaad#DT_Textual"/>
+    <oc:hasSpecialisation rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:hasSpecialisation rdf:resource="https://w3id.org/ontocaad#Feature_Texture"/>
+    <oc:hasSpecialisation rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_PhysicalModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Physical Model</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact_FacadeVariant3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:label xml:lang="en">Facade variant 3 — vermilion red cornice</rdfs:label>
+    <oc:hasArtefactType rdf:resource="https://w3id.org/ontocaad#AT_GeneratedImage"/>
+    <oc:hasDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualRaster"/>
+    <oc:isDigital rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isDigital>
+    <oc:isIterative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isIterative>
+    <oc:isExternal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isExternal>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:createdBy rdf:resource="https://w3id.org/ontocaad#Agent_DiffusionModel"/>
+    <oc:createdInStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DesignDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">DesignDecision</rdfs:label>
+    <skos:definition xml:lang="en">A design decision regarding the requirements and intentions of a
+    DesignProblem. Contains arguments for and against making that decision and can update
+    the ProjectState to implement that decision.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasDataType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has data type</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DataType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_Digital3DModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Digital 3D Model</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_SpatialRelationships">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Spatial Relationships</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#isExternal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">is external communication</rdfs:label>
+    <rdfs:comment xml:lang="en">Whether the artefact serves external communication (e.g. client).</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Decision_VermilionCornice">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+    <rdfs:label xml:lang="en">Choose vermilion red cornice variant</rdfs:label>
+    <oc:argumentsFor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Striking vermilion red cornice creates visual identity.
+    Neutral brickwork blends with streetscape. Contemporary concrete bay window
+    adds modern element. The designer stated they would never have proposed red
+    themselves — the diffusion model added creative value.</oc:argumentsFor>
+    <oc:argumentsAgainst rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bold colour may not suit all clients.</oc:argumentsAgainst>
+    <oc:updatesState rdf:resource="https://w3id.org/ontocaad#State_UpdatedModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#createdInStage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">created in stage</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignStage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#creates">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">creates</rdfs:label>
+    <rdfs:comment xml:lang="en">Person could draw or create a digital 3D model; Agent could compute
+    structural calculations, generate atmospheric visualisations or propose spatial
+    configurations.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Feature</rdfs:label>
+    <skos:definition xml:lang="en">Embedded architectural design features within artefacts are the
+    building blocks with which design decisions are made. The actor creates an artefact,
+    interprets its embedded features, and considers these features when reasoning to make
+    a design decision. As features are building blocks, there is no further class hierarchy.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#implements">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">implements</rdfs:label>
+    <rdfs:comment xml:lang="en">After a design decision has been made, the decision can be implemented.
+    Triggers the update of ProjectState.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact_StreetscapePhotos">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:label xml:lang="en">Streetscape photographs</rdfs:label>
+    <oc:hasArtefactType rdf:resource="https://w3id.org/ontocaad#AT_Photograph"/>
+    <oc:hasDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualRaster"/>
+    <oc:isDigital rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isDigital>
+    <oc:isIterative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isIterative>
+    <oc:isExternal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isExternal>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:createdBy rdf:resource="https://w3id.org/ontocaad#Designer_Lead"/>
+    <oc:createdInStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Stage_SketchDesign">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignStage"/>
+    <rdfs:label xml:lang="en">Sketch Design</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has requirement</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProject"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Lighting">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Lighting</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasFeature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has feature</rdfs:label>
+    <rdfs:comment xml:lang="en">Which features are embedded in the artefact.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Feature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasSpecialisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has specialisation</rdfs:label>
+    <rdfs:comment xml:lang="en">One or more design features the agent specialises in.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Agent"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Feature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_AnnotatedDiagram">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Annotated Diagram</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Stage_FinalDesign">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignStage"/>
+    <rdfs:label xml:lang="en">Final Design</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#intention">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">intention</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_Rendering">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Rendering</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact_FacadeVariant4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:label xml:lang="en">Facade variant 4 — terracotta tones</rdfs:label>
+    <oc:hasArtefactType rdf:resource="https://w3id.org/ontocaad#AT_GeneratedImage"/>
+    <oc:hasDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualRaster"/>
+    <oc:isDigital rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isDigital>
+    <oc:isIterative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isIterative>
+    <oc:isExternal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isExternal>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:createdBy rdf:resource="https://w3id.org/ontocaad#Agent_DiffusionModel"/>
+    <oc:createdInStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#reasons">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">reasons</rdfs:label>
+    <rdfs:comment xml:lang="en">Internal reasoning: three steps: (i) create artefact representing
+    relevant features, (ii) extract feature information from artefact, (iii) summarise
+    decision-making arguments. Based on Schön's reflective practitioner: reasoning
+    happens through interaction with a design artefact.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DT_Textual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DataType"/>
+    <rdfs:label xml:lang="en">Textual</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact_FacadeVariant1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:label xml:lang="en">Facade variant 1 — beige brickwork</rdfs:label>
+    <oc:hasArtefactType rdf:resource="https://w3id.org/ontocaad#AT_GeneratedImage"/>
+    <oc:hasDataType rdf:resource="https://w3id.org/ontocaad#DT_VisualRaster"/>
+    <oc:isDigital rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isDigital>
+    <oc:isIterative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</oc:isIterative>
+    <oc:isExternal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oc:isExternal>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+    <oc:hasFeature rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:createdBy rdf:resource="https://w3id.org/ontocaad#Agent_DiffusionModel"/>
+    <oc:createdInStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_Section">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Section</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#requirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">requirement</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_ReferenceImage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Reference Image</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DT_Numerical">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DataType"/>
+    <rdfs:label xml:lang="en">Numerical</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#stateDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">state description</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#ProjectState"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Stage_PrelimDesign">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignStage"/>
+    <rdfs:label xml:lang="en">Preliminary Design</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Actor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Actor</rdfs:label>
+    <skos:definition xml:lang="en">A superclass for entities that participate in the design process.
+    Has two subclasses: Person and Agent, who can interact with one another. An Actor
+    can create an Artefact, interpret a Feature, reframe a DesignProblem, reason on a
+    DesignDecision, make a DesignDecision, and implement a DesignDecision.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_GeneratedImage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Generated Image</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#ArtefactType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">ArtefactType</rdfs:label>
+    <skos:definition xml:lang="en">Different types of artefacts in the design process.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Role_Client">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Role"/>
+    <rdfs:label xml:lang="en">Client</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#argumentsFor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">arguments for</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DT_Graph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DataType"/>
+    <rdfs:label xml:lang="en">Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#makes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">makes</rdfs:label>
+    <rdfs:comment xml:lang="en">Deciding: the actor makes a design decision based on the arguments.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Person">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+    <skos:definition xml:lang="en">A human participant in the design process. Has a Role attribute.
+    Uses deductive, inductive, or abductive reasoning. Gathers sensory and social
+    information, constructs meaningful models through perception, and incorporates
+    tacit and embodied knowledge.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionInfo>1.0.0</owl:versionInfo>
+    <rdfs:label xml:lang="en">OntoCAAD</rdfs:label>
+    <dcterms:title xml:lang="en">OntoCAAD: an empirically grounded Ontology for Collaborative Agentic Architectural Design</dcterms:title>
+    <dcterms:description xml:lang="en">A proof-of-concept ontology that can be used as a foundation for
+    the development of collaborative AI agents that can assist with specific architectural
+    design tasks, considering both human and machine reasoning. Built using the Ontology
+    Building 101 methodology (Noy &amp; McGuinness, 2001) and grounded in empirical data from
+    a Flemish design firm living lab and educational experiments with diffusion models.</dcterms:description>
+    <dcterms:creator>Elien Vissers-Similon</dcterms:creator>
+    <dcterms:contributor>Theodoros Dounas</dcterms:contributor>
+    <dcterms:source>Vissers-Similon, De Walsche &amp; Dounas, 2026 (mapping method, industry data)</dcterms:source>
+    <dcterms:source>Vissers-Similon &amp; Dounas, 2026 (educational experiments)</dcterms:source>
+    <dcterms:source>Quattrociocchi, Capraro &amp; Perc, 2025 (epistemic pipelines)</dcterms:source>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:label xml:lang="en">Agent</rdfs:label>
+    <skos:definition xml:lang="en">A collaborative AI agent that assists with architectural design tasks.
+    Has attributes: AgentRole, DataType, and specialisation (one or more design features).
+    Dependent on the input information provided. The machine reasoning follows the epistemic
+    pipeline: reframing information [1], internal reasoning [2-6], deciding [7].</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_ColourScheme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Colour Scheme</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#relatedFeature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">related feature</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Feature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasAgentDataType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has agent data type</rdfs:label>
+    <rdfs:comment xml:lang="en">The data types the agent can process.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Agent"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DataType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Project_FacadeDesign">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignProject"/>
+    <rdfs:label xml:lang="en">Facade Design — Residential Building, Flanders</rdfs:label>
+    <oc:currentStage rdf:resource="https://w3id.org/ontocaad#Stage_PrelimDesign"/>
+    <oc:hasRequirement rdf:resource="https://w3id.org/ontocaad#Problem_FacadeMateriality"/>
+    <oc:currentState rdf:resource="https://w3id.org/ontocaad#State_SketchupModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DT_VisualRaster">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DataType"/>
+    <rdfs:label xml:lang="en">Visual - Raster</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_MoodBoard">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Mood Board</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AgentRole_Reasoner">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#AgentRole"/>
+    <rdfs:label xml:lang="en">Reasoner</rdfs:label>
+    <skos:definition xml:lang="en">Internal reasoning, aligned with epistemic pipeline human [5], machine [2-6].</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_Floorplan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Floorplan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Role_Designer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Role"/>
+    <rdfs:label xml:lang="en">Designer</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AgentRole_Implementor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#AgentRole"/>
+    <rdfs:label xml:lang="en">Implementor</rdfs:label>
+    <skos:definition xml:lang="en">Implements design decisions into artefacts or project state.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DesignProject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">DesignProject</rdfs:label>
+    <skos:definition xml:lang="en">Modelled as a state machine with three properties: the current state,
+    the current design stage, and a list of all design requirements. The iterative nature
+    of design processes is captured through the state machine model.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DesignProblem">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">DesignProblem</rdfs:label>
+    <skos:definition xml:lang="en">A design requirement, its related features and the design intentions
+    to adhere to the requirements. For example, the requirement could be that the kitchen
+    should border the living room, the intention an open-concept living, and the related
+    feature spatial relationships.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasArtefactType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has artefact type</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <skos:definition xml:lang="en">Different roles a Person can have within the design process.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Feeling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Feeling</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#State_UpdatedModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ProjectState"/>
+    <rdfs:label xml:lang="en">Updated Sketchup model with vermilion cornice</rdfs:label>
+    <oc:stateDescription xml:lang="en">Sketchup model updated with chosen facade materiality.</oc:stateDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Stage_PreDesign">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignStage"/>
+    <rdfs:label xml:lang="en">Pre-Design</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#DataType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">DataType</rdfs:label>
+    <skos:definition xml:lang="en">Types of data representation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Problem_FacadeMateriality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+    <rdfs:label xml:lang="en">Facade materiality and colour scheme</rdfs:label>
+    <oc:requirement rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brick and concrete materiality for the facade</oc:requirement>
+    <oc:intention rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The colour scheme needs to match the streetscape, but also stand out</oc:intention>
+    <oc:relatedFeature rdf:resource="https://w3id.org/ontocaad#Feature_ColourScheme"/>
+    <oc:relatedFeature rdf:resource="https://w3id.org/ontocaad#Feature_Style"/>
+    <oc:relatedFeature rdf:resource="https://w3id.org/ontocaad#Feature_Materiality"/>
+    <oc:hasDecision rdf:resource="https://w3id.org/ontocaad#Decision_VermilionCornice"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#reframes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">reframes</rdfs:label>
+    <rdfs:comment xml:lang="en">Reframing information: Person gathers sensory/social information,
+    constructs meaningful model, incorporates tacit knowledge. Agent is dependent on
+    input information. Analyses DesignProject to identify a requirement, creates
+    DesignProblem instance, attributes relevant features.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Actor"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#isIterative">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">is iterative</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#isDigital">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">is digital</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#updatesState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">updates state</rdfs:label>
+    <rdfs:comment xml:lang="en">A DesignDecision, when implemented, updates the ProjectState.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#ProjectState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Style">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Style</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#argumentsAgainst">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">arguments against</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_HandSketch">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Hand Sketch</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AgentRole_Reframer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#AgentRole"/>
+    <rdfs:label xml:lang="en">Reframer</rdfs:label>
+    <skos:definition xml:lang="en">Reframes information, aligned with epistemic pipeline human [1-4], machine [1].</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#AT_DesignBrief">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#ArtefactType"/>
+    <rdfs:label xml:lang="en">Design Brief</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Texture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Texture</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#currentState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">current state</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProject"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#ProjectState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has role</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Person"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Role"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Artefact">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Artefact</rdfs:label>
+    <skos:definition xml:lang="en">A design artefact produced during the design process. Properties
+    include: type, data type, whether digital, iterative, or for external communication,
+    which features are embedded, who created it, and in which design stage.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Role_Manager">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Role"/>
+    <rdfs:label xml:lang="en">Manager</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#currentStage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">current stage</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProject"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignStage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#ProjectState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">ProjectState</rdfs:label>
+    <skos:definition xml:lang="en">Continuously tracks the versions of the project. Updated when a
+    DesignDecision is implemented.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#hasDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has decision</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#DesignProblem"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#DesignDecision"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Role_Engineer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Role"/>
+    <rdfs:label xml:lang="en">Engineer</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#createdBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">created by</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ontocaad#Artefact"/>
+    <rdfs:range rdf:resource="https://w3id.org/ontocaad#Actor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ontocaad#Feature_Geometry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://w3id.org/ontocaad#Feature"/>
+    <rdfs:label xml:lang="en">Geometry</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

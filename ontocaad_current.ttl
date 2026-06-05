@@ -1,0 +1,612 @@
+@prefix oc:      <https://w3id.org/ontocaad#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# =============================================================================
+# ONTOLOGY METADATA
+# =============================================================================
+
+<https://w3id.org/ontocaad> a owl:Ontology ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:label "OntoCAAD"@en ;
+    dcterms:title "OntoCAAD: an empirically grounded Ontology for Collaborative Agentic Architectural Design"@en ;
+    dcterms:description """A proof-of-concept ontology that can be used as a foundation for
+    the development of collaborative AI agents that can assist with specific architectural
+    design tasks, considering both human and machine reasoning. Built using the Ontology
+    Building 101 methodology (Noy & McGuinness, 2001) and grounded in empirical data from
+    a Flemish design firm living lab and educational experiments with diffusion models."""@en ;
+    dcterms:creator "Elien Vissers-Similon" ;
+    dcterms:contributor "Theodoros Dounas" ;
+    dcterms:source "Vissers-Similon, De Walsche & Dounas, 2026 (mapping method, industry data)" ;
+    dcterms:source "Vissers-Similon & Dounas, 2026 (educational experiments)" ;
+    dcterms:source "Quattrociocchi, Capraro & Perc, 2025 (epistemic pipelines)" .
+
+
+# =============================================================================
+# SECTION 4.4: FOUR FOUNDATION CLASSES (Figure 3)
+# =============================================================================
+# Feature, Artefact, Actor, DesignDecision — and their interrelationships.
+# =============================================================================
+
+# --- Feature ---
+
+oc:Feature a owl:Class ;
+    rdfs:label "Feature"@en ;
+    skos:definition """Embedded architectural design features within artefacts are the
+    building blocks with which design decisions are made. The actor creates an artefact,
+    interprets its embedded features, and considers these features when reasoning to make
+    a design decision. As features are building blocks, there is no further class hierarchy."""@en .
+
+# --- Artefact (Section 4.4.2, Figure 4) ---
+
+oc:Artefact a owl:Class ;
+    rdfs:label "Artefact"@en ;
+    skos:definition """A design artefact produced during the design process. Properties
+    include: type, data type, whether digital, iterative, or for external communication,
+    which features are embedded, who created it, and in which design stage."""@en .
+
+# --- Actor (Section 4.4.4, Figure 6) ---
+
+oc:Actor a owl:Class ;
+    rdfs:label "Actor"@en ;
+    skos:definition """A superclass for entities that participate in the design process.
+    Has two subclasses: Person and Agent, who can interact with one another. An Actor
+    can create an Artefact, interpret a Feature, reframe a DesignProblem, reason on a
+    DesignDecision, make a DesignDecision, and implement a DesignDecision."""@en .
+
+oc:Person a owl:Class ;
+    rdfs:subClassOf oc:Actor ;
+    rdfs:label "Person"@en ;
+    skos:definition """A human participant in the design process. Has a Role attribute.
+    Uses deductive, inductive, or abductive reasoning. Gathers sensory and social
+    information, constructs meaningful models through perception, and incorporates
+    tacit and embodied knowledge."""@en .
+
+oc:Agent a owl:Class ;
+    rdfs:subClassOf oc:Actor ;
+    rdfs:label "Agent"@en ;
+    skos:definition """A collaborative AI agent that assists with architectural design tasks.
+    Has attributes: AgentRole, DataType, and specialisation (one or more design features).
+    Dependent on the input information provided. The machine reasoning follows the epistemic
+    pipeline: reframing information [1], internal reasoning [2-6], deciding [7]."""@en .
+
+# --- DesignDecision (Section 4.4.3, Figure 5) ---
+
+oc:DesignDecision a owl:Class ;
+    rdfs:label "DesignDecision"@en ;
+    skos:definition """A design decision regarding the requirements and intentions of a
+    DesignProblem. Contains arguments for and against making that decision and can update
+    the ProjectState to implement that decision."""@en .
+
+
+# =============================================================================
+# SECTION 4.4.3: DESIGN DECISION HIERARCHY (Figure 5)
+# =============================================================================
+
+oc:DesignProject a owl:Class ;
+    rdfs:label "DesignProject"@en ;
+    skos:definition """Modelled as a state machine with three properties: the current state,
+    the current design stage, and a list of all design requirements. The iterative nature
+    of design processes is captured through the state machine model."""@en .
+
+oc:ProjectState a owl:Class ;
+    rdfs:label "ProjectState"@en ;
+    skos:definition """Continuously tracks the versions of the project. Updated when a
+    DesignDecision is implemented."""@en .
+
+oc:DesignProblem a owl:Class ;
+    rdfs:label "DesignProblem"@en ;
+    skos:definition """A design requirement, its related features and the design intentions
+    to adhere to the requirements. For example, the requirement could be that the kitchen
+    should border the living room, the intention an open-concept living, and the related
+    feature spatial relationships."""@en .
+
+
+# =============================================================================
+# ENUMERATION CLASSES (Section 4.5, Table 2)
+# =============================================================================
+
+oc:ArtefactType a owl:Class ;
+    rdfs:label "ArtefactType"@en ;
+    skos:definition "Different types of artefacts in the design process."@en .
+
+oc:DataType a owl:Class ;
+    rdfs:label "DataType"@en ;
+    skos:definition "Types of data representation."@en .
+
+oc:DesignStage a owl:Class ;
+    rdfs:label "DesignStage"@en ;
+    skos:definition "Different stages in the architectural design process."@en .
+
+oc:Role a owl:Class ;
+    rdfs:label "Role"@en ;
+    skos:definition "Different roles a Person can have within the design process."@en .
+
+oc:AgentRole a owl:Class ;
+    rdfs:label "AgentRole"@en ;
+    skos:definition """Different roles an Agent can have within the design process.
+    Aligned with the epistemic pipeline categories: reframing information,
+    internal reasoning, and deciding."""@en .
+
+
+# =============================================================================
+# ENUMERATION INDIVIDUALS — Feature
+# =============================================================================
+
+oc:Feature_Style a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Style"@en .
+oc:Feature_Texture a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Texture"@en .
+oc:Feature_Geometry a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Geometry"@en .
+oc:Feature_SpatialRelationships a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Spatial Relationships"@en .
+oc:Feature_Feeling a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Feeling"@en .
+oc:Feature_Lighting a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Lighting"@en .
+oc:Feature_Details a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Details"@en .
+oc:Feature_Materiality a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Materiality"@en .
+oc:Feature_ColourScheme a owl:NamedIndividual, oc:Feature ;
+    rdfs:label "Colour Scheme"@en .
+
+
+# =============================================================================
+# ENUMERATION INDIVIDUALS — ArtefactType
+# =============================================================================
+
+oc:AT_Floorplan a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Floorplan"@en .
+oc:AT_Section a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Section"@en .
+oc:AT_PhysicalModel a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Physical Model"@en .
+oc:AT_Digital3DModel a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Digital 3D Model"@en .
+oc:AT_HandSketch a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Hand Sketch"@en .
+oc:AT_MoodBoard a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Mood Board"@en .
+oc:AT_Rendering a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Rendering"@en .
+oc:AT_BillOfQuantities a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Bill of Quantities"@en .
+oc:AT_GeneratedImage a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Generated Image"@en .
+oc:AT_AnnotatedDiagram a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Annotated Diagram"@en .
+oc:AT_DesignBrief a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Design Brief"@en .
+oc:AT_ReferenceImage a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Reference Image"@en .
+oc:AT_Photograph a owl:NamedIndividual, oc:ArtefactType ;
+    rdfs:label "Photograph"@en .
+
+
+# =============================================================================
+# ENUMERATION INDIVIDUALS — DataType
+# =============================================================================
+
+oc:DT_VisualRaster a owl:NamedIndividual, oc:DataType ;
+    rdfs:label "Visual - Raster"@en .
+oc:DT_VisualVectorial a owl:NamedIndividual, oc:DataType ;
+    rdfs:label "Visual - Vectorial"@en .
+oc:DT_Textual a owl:NamedIndividual, oc:DataType ;
+    rdfs:label "Textual"@en .
+oc:DT_Graph a owl:NamedIndividual, oc:DataType ;
+    rdfs:label "Graph"@en .
+oc:DT_Numerical a owl:NamedIndividual, oc:DataType ;
+    rdfs:label "Numerical"@en .
+
+
+# =============================================================================
+# ENUMERATION INDIVIDUALS — DesignStage
+# =============================================================================
+
+oc:Stage_PreDesign a owl:NamedIndividual, oc:DesignStage ;
+    rdfs:label "Pre-Design"@en .
+oc:Stage_SketchDesign a owl:NamedIndividual, oc:DesignStage ;
+    rdfs:label "Sketch Design"@en .
+oc:Stage_PrelimDesign a owl:NamedIndividual, oc:DesignStage ;
+    rdfs:label "Preliminary Design"@en .
+oc:Stage_FinalDesign a owl:NamedIndividual, oc:DesignStage ;
+    rdfs:label "Final Design"@en .
+
+
+# =============================================================================
+# ENUMERATION INDIVIDUALS — Role (for Person)
+# =============================================================================
+
+oc:Role_Designer a owl:NamedIndividual, oc:Role ;
+    rdfs:label "Designer"@en .
+oc:Role_Manager a owl:NamedIndividual, oc:Role ;
+    rdfs:label "Manager"@en .
+oc:Role_Client a owl:NamedIndividual, oc:Role ;
+    rdfs:label "Client"@en .
+oc:Role_Engineer a owl:NamedIndividual, oc:Role ;
+    rdfs:label "Engineer"@en .
+
+
+# =============================================================================
+# ENUMERATION INDIVIDUALS — AgentRole
+# =============================================================================
+
+oc:AgentRole_Reframer a owl:NamedIndividual, oc:AgentRole ;
+    rdfs:label "Reframer"@en ;
+    skos:definition "Reframes information, aligned with epistemic pipeline human [1-4], machine [1]."@en .
+oc:AgentRole_Reasoner a owl:NamedIndividual, oc:AgentRole ;
+    rdfs:label "Reasoner"@en ;
+    skos:definition "Internal reasoning, aligned with epistemic pipeline human [5], machine [2-6]."@en .
+oc:AgentRole_DecisionMaker a owl:NamedIndividual, oc:AgentRole ;
+    rdfs:label "Decision Maker"@en ;
+    skos:definition "Deciding, aligned with epistemic pipeline human [6-7], machine [7]."@en .
+oc:AgentRole_Implementor a owl:NamedIndividual, oc:AgentRole ;
+    rdfs:label "Implementor"@en ;
+    skos:definition "Implements design decisions into artefacts or project state."@en .
+
+
+# =============================================================================
+# OBJECT PROPERTIES — Artefact (Section 4.4.2, Figure 4)
+# =============================================================================
+
+oc:hasArtefactType a owl:ObjectProperty ;
+    rdfs:label "has artefact type"@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range oc:ArtefactType .
+
+oc:hasDataType a owl:ObjectProperty ;
+    rdfs:label "has data type"@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range oc:DataType .
+
+oc:hasFeature a owl:ObjectProperty ;
+    rdfs:label "has feature"@en ;
+    rdfs:comment "Which features are embedded in the artefact."@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range oc:Feature .
+
+oc:createdBy a owl:ObjectProperty ;
+    rdfs:label "created by"@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range oc:Actor .
+
+oc:createdInStage a owl:ObjectProperty ;
+    rdfs:label "created in stage"@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range oc:DesignStage .
+
+# --- Artefact datatype properties ---
+
+oc:isDigital a owl:DatatypeProperty ;
+    rdfs:label "is digital"@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range xsd:boolean .
+
+oc:isIterative a owl:DatatypeProperty ;
+    rdfs:label "is iterative"@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range xsd:boolean .
+
+oc:isExternal a owl:DatatypeProperty ;
+    rdfs:label "is external communication"@en ;
+    rdfs:comment "Whether the artefact serves external communication (e.g. client)."@en ;
+    rdfs:domain oc:Artefact ;
+    rdfs:range xsd:boolean .
+
+
+# =============================================================================
+# OBJECT PROPERTIES — Actor (Section 4.4.4, Figure 6)
+# =============================================================================
+
+oc:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role"@en ;
+    rdfs:domain oc:Person ;
+    rdfs:range oc:Role .
+
+oc:hasAgentRole a owl:ObjectProperty ;
+    rdfs:label "has agent role"@en ;
+    rdfs:domain oc:Agent ;
+    rdfs:range oc:AgentRole .
+
+oc:hasAgentDataType a owl:ObjectProperty ;
+    rdfs:label "has agent data type"@en ;
+    rdfs:comment "The data types the agent can process."@en ;
+    rdfs:domain oc:Agent ;
+    rdfs:range oc:DataType .
+
+oc:hasSpecialisation a owl:ObjectProperty ;
+    rdfs:label "has specialisation"@en ;
+    rdfs:comment "One or more design features the agent specialises in."@en ;
+    rdfs:domain oc:Agent ;
+    rdfs:range oc:Feature .
+
+
+# =============================================================================
+# OBJECT PROPERTIES — DesignProject / DesignProblem / DesignDecision
+# (Section 4.4.3, Figure 5)
+# =============================================================================
+
+oc:currentState a owl:ObjectProperty ;
+    rdfs:label "current state"@en ;
+    rdfs:domain oc:DesignProject ;
+    rdfs:range oc:ProjectState .
+
+oc:currentStage a owl:ObjectProperty ;
+    rdfs:label "current stage"@en ;
+    rdfs:domain oc:DesignProject ;
+    rdfs:range oc:DesignStage .
+
+oc:hasRequirement a owl:ObjectProperty ;
+    rdfs:label "has requirement"@en ;
+    rdfs:domain oc:DesignProject ;
+    rdfs:range oc:DesignProblem .
+
+oc:relatedFeature a owl:ObjectProperty ;
+    rdfs:label "related feature"@en ;
+    rdfs:domain oc:DesignProblem ;
+    rdfs:range oc:Feature .
+
+oc:hasDecision a owl:ObjectProperty ;
+    rdfs:label "has decision"@en ;
+    rdfs:domain oc:DesignProblem ;
+    rdfs:range oc:DesignDecision .
+
+oc:updatesState a owl:ObjectProperty ;
+    rdfs:label "updates state"@en ;
+    rdfs:comment "A DesignDecision, when implemented, updates the ProjectState."@en ;
+    rdfs:domain oc:DesignDecision ;
+    rdfs:range oc:ProjectState .
+
+# --- DesignProblem datatype properties ---
+
+oc:requirement a owl:DatatypeProperty ;
+    rdfs:label "requirement"@en ;
+    rdfs:domain oc:DesignProblem ;
+    rdfs:range xsd:string .
+
+oc:intention a owl:DatatypeProperty ;
+    rdfs:label "intention"@en ;
+    rdfs:domain oc:DesignProblem ;
+    rdfs:range xsd:string .
+
+# --- DesignDecision datatype properties ---
+
+oc:argumentsFor a owl:DatatypeProperty ;
+    rdfs:label "arguments for"@en ;
+    rdfs:domain oc:DesignDecision ;
+    rdfs:range xsd:string .
+
+oc:argumentsAgainst a owl:DatatypeProperty ;
+    rdfs:label "arguments against"@en ;
+    rdfs:domain oc:DesignDecision ;
+    rdfs:range xsd:string .
+
+# --- ProjectState datatype properties ---
+
+oc:stateDescription a owl:DatatypeProperty ;
+    rdfs:label "state description"@en ;
+    rdfs:domain oc:ProjectState ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# CLASS INTERACTIONS (Section 4.7)
+# Modelled as object properties representing the thinking processes
+# and auxiliary functions that collaborative agents execute.
+# =============================================================================
+
+# --- Thinking processes (aligned with epistemic pipelines) ---
+
+oc:reframes a owl:ObjectProperty ;
+    rdfs:label "reframes"@en ;
+    rdfs:comment """Reframing information: Person gathers sensory/social information,
+    constructs meaningful model, incorporates tacit knowledge. Agent is dependent on
+    input information. Analyses DesignProject to identify a requirement, creates
+    DesignProblem instance, attributes relevant features."""@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:DesignProblem .
+
+oc:reasons a owl:ObjectProperty ;
+    rdfs:label "reasons"@en ;
+    rdfs:comment """Internal reasoning: three steps: (i) create artefact representing
+    relevant features, (ii) extract feature information from artefact, (iii) summarise
+    decision-making arguments. Based on Schön's reflective practitioner: reasoning
+    happens through interaction with a design artefact."""@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:DesignDecision .
+
+oc:makes a owl:ObjectProperty ;
+    rdfs:label "makes"@en ;
+    rdfs:comment "Deciding: the actor makes a design decision based on the arguments."@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:DesignDecision .
+
+# --- Auxiliary class interactions ---
+
+oc:interacts a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "interacts"@en ;
+    rdfs:comment """Actors can interact with one another; be it instances of Person or Agent.
+    The interact() function can be programmed differently for different Agent instances."""@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:Actor .
+
+oc:implements a owl:ObjectProperty ;
+    rdfs:label "implements"@en ;
+    rdfs:comment """After a design decision has been made, the decision can be implemented.
+    Triggers the update of ProjectState."""@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:DesignDecision .
+
+oc:creates a owl:ObjectProperty ;
+    rdfs:label "creates"@en ;
+    rdfs:comment """Person could draw or create a digital 3D model; Agent could compute
+    structural calculations, generate atmospheric visualisations or propose spatial
+    configurations."""@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:Artefact .
+
+oc:interprets a owl:ObjectProperty ;
+    rdfs:label "interprets"@en ;
+    rdfs:comment """An actor uses analytical techniques to extract design features from
+    artefacts. Person can analyse visually; Agent can use ML techniques. When Agent is a
+    diffusion model, interpretations can be textual, visual, or spatial in nature."""@en ;
+    rdfs:domain oc:Actor ;
+    rdfs:range oc:Feature .
+
+
+# =============================================================================
+# USE-CASE DEMONSTRATION (Section 5)
+# Facade design for a free-standing residential building in Flanders
+# =============================================================================
+
+# --- Project instance ---
+
+oc:Project_FacadeDesign a owl:NamedIndividual, oc:DesignProject ;
+    rdfs:label "Facade Design — Residential Building, Flanders"@en ;
+    oc:currentStage oc:Stage_PrelimDesign ;
+    oc:hasRequirement oc:Problem_FacadeMateriality .
+
+oc:State_SketchupModel a owl:NamedIndividual, oc:ProjectState ;
+    rdfs:label "Sketchup model of residential building"@en ;
+    oc:stateDescription "3D Sketchup model representing current design state."@en .
+
+oc:Project_FacadeDesign oc:currentState oc:State_SketchupModel .
+
+# --- DesignProblem instance ---
+
+oc:Problem_FacadeMateriality a owl:NamedIndividual, oc:DesignProblem ;
+    rdfs:label "Facade materiality and colour scheme"@en ;
+    oc:requirement "Brick and concrete materiality for the facade"^^xsd:string ;
+    oc:intention "The colour scheme needs to match the streetscape, but also stand out"^^xsd:string ;
+    oc:relatedFeature oc:Feature_ColourScheme, oc:Feature_Style, oc:Feature_Materiality ;
+    oc:hasDecision oc:Decision_VermilionCornice .
+
+# --- Actor instances ---
+
+oc:Designer_Lead a owl:NamedIndividual, oc:Person ;
+    rdfs:label "Lead Designer"@en ;
+    oc:hasRole oc:Role_Designer .
+
+oc:Designer_Colleague1 a owl:NamedIndividual, oc:Person ;
+    rdfs:label "Colleague Designer"@en ;
+    oc:hasRole oc:Role_Designer .
+
+oc:Agent_DiffusionModel a owl:NamedIndividual, oc:Agent ;
+    rdfs:label "Diffusion Model Agent"@en ;
+    oc:hasAgentRole oc:AgentRole_Reasoner ;
+    oc:hasAgentDataType oc:DT_VisualRaster, oc:DT_Textual ;
+    oc:hasSpecialisation oc:Feature_Style, oc:Feature_Texture, oc:Feature_Materiality .
+
+# --- Use-case workflow ---
+
+# Step 1: Designer reframes the design problem
+oc:Designer_Lead oc:reframes oc:Problem_FacadeMateriality .
+
+# Step 2: Designer interacts with diffusion model (reason function)
+oc:Designer_Lead oc:interacts oc:Agent_DiffusionModel .
+
+# Step 3: Artefact — streetscape photographs (input to diffusion model)
+oc:Artefact_StreetscapePhotos a owl:NamedIndividual, oc:Artefact ;
+    rdfs:label "Streetscape photographs"@en ;
+    oc:hasArtefactType oc:AT_Photograph ;
+    oc:hasDataType oc:DT_VisualRaster ;
+    oc:isDigital "true"^^xsd:boolean ;
+    oc:isIterative "false"^^xsd:boolean ;
+    oc:isExternal "false"^^xsd:boolean ;
+    oc:hasFeature oc:Feature_Style, oc:Feature_ColourScheme ;
+    oc:createdBy oc:Designer_Lead ;
+    oc:createdInStage oc:Stage_PrelimDesign .
+
+# Step 4: Artefact — Sketchup model image (input to diffusion model)
+oc:Artefact_SketchupImage a owl:NamedIndividual, oc:Artefact ;
+    rdfs:label "Sketchup model line drawing"@en ;
+    oc:hasArtefactType oc:AT_Digital3DModel ;
+    oc:hasDataType oc:DT_VisualVectorial ;
+    oc:isDigital "true"^^xsd:boolean ;
+    oc:isIterative "true"^^xsd:boolean ;
+    oc:isExternal "false"^^xsd:boolean ;
+    oc:hasFeature oc:Feature_Geometry ;
+    oc:createdBy oc:Designer_Lead ;
+    oc:createdInStage oc:Stage_PrelimDesign .
+
+# Step 5: Diffusion model creates generated artefacts (several variants)
+oc:Artefact_FacadeVariant1 a owl:NamedIndividual, oc:Artefact ;
+    rdfs:label "Facade variant 1 — beige brickwork"@en ;
+    oc:hasArtefactType oc:AT_GeneratedImage ;
+    oc:hasDataType oc:DT_VisualRaster ;
+    oc:isDigital "true"^^xsd:boolean ;
+    oc:isIterative "true"^^xsd:boolean ;
+    oc:isExternal "false"^^xsd:boolean ;
+    oc:hasFeature oc:Feature_Style, oc:Feature_Materiality, oc:Feature_ColourScheme ;
+    oc:createdBy oc:Agent_DiffusionModel ;
+    oc:createdInStage oc:Stage_PrelimDesign .
+
+oc:Artefact_FacadeVariant2 a owl:NamedIndividual, oc:Artefact ;
+    rdfs:label "Facade variant 2 — grey concrete"@en ;
+    oc:hasArtefactType oc:AT_GeneratedImage ;
+    oc:hasDataType oc:DT_VisualRaster ;
+    oc:isDigital "true"^^xsd:boolean ;
+    oc:isIterative "true"^^xsd:boolean ;
+    oc:isExternal "false"^^xsd:boolean ;
+    oc:hasFeature oc:Feature_Style, oc:Feature_Materiality, oc:Feature_ColourScheme ;
+    oc:createdBy oc:Agent_DiffusionModel ;
+    oc:createdInStage oc:Stage_PrelimDesign .
+
+oc:Artefact_FacadeVariant3 a owl:NamedIndividual, oc:Artefact ;
+    rdfs:label "Facade variant 3 — vermilion red cornice"@en ;
+    oc:hasArtefactType oc:AT_GeneratedImage ;
+    oc:hasDataType oc:DT_VisualRaster ;
+    oc:isDigital "true"^^xsd:boolean ;
+    oc:isIterative "true"^^xsd:boolean ;
+    oc:isExternal "false"^^xsd:boolean ;
+    oc:hasFeature oc:Feature_Style, oc:Feature_Materiality, oc:Feature_ColourScheme ;
+    oc:createdBy oc:Agent_DiffusionModel ;
+    oc:createdInStage oc:Stage_PrelimDesign .
+
+oc:Artefact_FacadeVariant4 a owl:NamedIndividual, oc:Artefact ;
+    rdfs:label "Facade variant 4 — terracotta tones"@en ;
+    oc:hasArtefactType oc:AT_GeneratedImage ;
+    oc:hasDataType oc:DT_VisualRaster ;
+    oc:isDigital "true"^^xsd:boolean ;
+    oc:isIterative "true"^^xsd:boolean ;
+    oc:isExternal "false"^^xsd:boolean ;
+    oc:hasFeature oc:Feature_Style, oc:Feature_Materiality, oc:Feature_ColourScheme ;
+    oc:createdBy oc:Agent_DiffusionModel ;
+    oc:createdInStage oc:Stage_PrelimDesign .
+
+# Step 6: Designer annotates artefacts (interprets features)
+oc:Designer_Lead oc:interprets oc:Feature_Style .
+oc:Designer_Lead oc:interprets oc:Feature_ColourScheme .
+oc:Designer_Lead oc:interprets oc:Feature_Materiality .
+
+# Step 7: Designer discusses with colleagues
+oc:Designer_Lead oc:interacts oc:Designer_Colleague1 .
+
+# Step 8: Designer reasons on DesignDecision
+oc:Designer_Lead oc:reasons oc:Decision_VermilionCornice .
+
+# Step 9: DesignDecision instance
+oc:Decision_VermilionCornice a owl:NamedIndividual, oc:DesignDecision ;
+    rdfs:label "Choose vermilion red cornice variant"@en ;
+    oc:argumentsFor """Striking vermilion red cornice creates visual identity.
+    Neutral brickwork blends with streetscape. Contemporary concrete bay window
+    adds modern element. The designer stated they would never have proposed red
+    themselves — the diffusion model added creative value."""^^xsd:string ;
+    oc:argumentsAgainst "Bold colour may not suit all clients."^^xsd:string .
+
+# Step 10: Designer makes and implements the decision
+oc:Designer_Lead oc:makes oc:Decision_VermilionCornice .
+oc:Designer_Lead oc:implements oc:Decision_VermilionCornice .
+
+# Step 11: ProjectState updated
+oc:State_UpdatedModel a owl:NamedIndividual, oc:ProjectState ;
+    rdfs:label "Updated Sketchup model with vermilion cornice"@en ;
+    oc:stateDescription "Sketchup model updated with chosen facade materiality."@en .
+
+oc:Decision_VermilionCornice oc:updatesState oc:State_UpdatedModel .
