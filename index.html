@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OntoCAAD — Collaborative Agentic Architectural Design Ontology</title>
+<meta name="description" content="An empirically grounded ontology for collaborative AI agents in architectural design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --ink: #1a1a18;
+  --paper: #faf9f6;
+  --warm: #f5f3ee;
+  --accent: #2a5fa0;
+  --accent-light: #e6f1fb;
+  --coral: #d85a30;
+  --teal: #0f6e56;
+  --purple: #534ab7;
+  --border: #ddd8cc;
+  --muted: #777770;
+  --code-bg: #f0ede6;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* --- HEADER --- */
+header {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem 2rem 2.5rem;
+}
+header .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+header h1 {
+  font-family: var(--sans);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+header h1 span {
+  color: #85b7eb;
+}
+header .subtitle {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #b0ada5;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: #908d85;
+}
+header .meta a { color: #85b7eb; text-decoration: none; }
+header .meta a:hover { text-decoration: underline; }
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.1);
+  color: #ccc8be;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* --- NAV --- */
+nav {
+  background: var(--warm);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav .container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+nav a {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.7rem 0.8rem;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+nav a:hover, nav a:focus {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* --- MAIN --- */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 3.5rem;
+}
+h2 {
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--border);
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+p { margin-bottom: 1rem; }
+a { color: var(--accent); }
+
+/* --- DOWNLOAD CARDS --- */
+.downloads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+.dl-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.15s;
+}
+.dl-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(42,95,160,0.1);
+  transform: translateY(-1px);
+}
+.dl-card .format {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+.dl-card .desc {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* --- TABLES --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.92rem;
+}
+th {
+  font-family: var(--sans);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.8rem;
+  background: var(--warm);
+  border-bottom: 2px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+td {
+  padding: 0.45rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:hover td { background: rgba(42,95,160,0.03); }
+.cls-name {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 0.88rem;
+}
+.prop-name {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--coral);
+}
+.range-name {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--teal);
+}
+
+/* --- CLASS CARDS --- */
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.class-card {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  border-left: 4px solid var(--accent);
+}
+.class-card.foundation { border-left-color: var(--coral); }
+.class-card.decision { border-left-color: var(--purple); }
+.class-card.actor { border-left-color: var(--teal); }
+.class-card.enum { border-left-color: var(--muted); }
+.class-card h4 {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.class-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+.class-card .ind-count {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: white;
+  background: var(--accent);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.4rem;
+}
+
+/* --- CODE --- */
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+pre {
+  background: var(--ink);
+  color: #e0ddd5;
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 1rem 0 1.5rem;
+}
+pre .comment { color: #6a6860; }
+pre .keyword { color: #85b7eb; }
+pre .string { color: #e07b5f; }
+pre .uri { color: #5dcaa5; }
+
+/* --- STATS BAR --- */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+.stat {
+  text-align: center;
+}
+.stat .num {
+  font-family: var(--sans);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat .label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- FIGURE --- */
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+figure img {
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+figcaption {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* --- FOOTER --- */
+footer {
+  background: var(--warm);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+footer a { color: var(--accent); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 640px) {
+  header h1 { font-size: 1.6rem; }
+  body { font-size: 16px; }
+  main { padding: 1.5rem 1rem; }
+  .downloads { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Onto<span>CAAD</span></h1>
+    <div class="subtitle">An empirically grounded Ontology for Collaborative Agentic Architectural Design</div>
+    <div class="meta">
+      <span>Version <span class="badge">1.0.0</span></span>
+      <span>Namespace: <a href="https://w3id.org/ontocaad"><code>https://w3id.org/ontocaad#</code></a></span>
+      <span><a href="https://github.com/arlav/OntoCAAD">GitHub</a></span>
+      <span>License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <a href="#about">About</a>
+    <a href="#download">Download</a>
+    <a href="#classes">Classes</a>
+    <a href="#properties">Properties</a>
+    <a href="#enumerations">Enumerations</a>
+    <a href="#interactions">Interactions</a>
+    <a href="#usecase">Use-Case</a>
+    <a href="#cite">Cite</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ==================== ABOUT ==================== -->
+<section id="about">
+  <h2>About</h2>
+  <p>
+    <strong>OntoCAAD</strong> is a proof-of-concept ontology designed as a foundation for developing collaborative AI agents that assist with architectural design tasks. It models both human and machine reasoning within the design process, grounded in empirical data from a Flemish design firm living lab and educational experiments with diffusion models.
+  </p>
+  <p>
+    The ontology captures four interconnected concerns: the <em>design features</em> embedded in artefacts, the <em>artefacts</em> themselves, the <em>actors</em> (human designers and AI agents) who create and interpret them, and the <em>design decisions</em> that emerge from their collaboration. It is built using the Ontology Building 101 methodology (Noy &amp; McGuinness, 2001) and aligns human and machine reasoning through the epistemic pipeline framework (Quattrociocchi, Capraro &amp; Perc, 2025).
+  </p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">14</div><div class="label">Classes</div></div>
+    <div class="stat"><div class="num">22</div><div class="label">Object Properties</div></div>
+    <div class="stat"><div class="num">8</div><div class="label">Datatype Properties</div></div>
+    <div class="stat"><div class="num">53</div><div class="label">Individuals</div></div>
+    <div class="stat"><div class="num">438</div><div class="label">Triples</div></div>
+  </div>
+
+  <h3>Authors</h3>
+  <p>
+    <strong>Elien Vissers-Similon</strong> — University of Antwerp<br>
+    <strong>Theodoros Dounas</strong> — Heriot-Watt University &amp; Adventurous Systems
+  </p>
+
+  <h3>Empirical Sources</h3>
+  <p>
+    Vissers-Similon, De Walsche &amp; Dounas, 2026 (visual mapping method, industry living lab data)<br>
+    Vissers-Similon &amp; Dounas, 2026 (diffusion-driven educational experiments A–E)
+  </p>
+</section>
+
+<!-- ==================== DOWNLOAD ==================== -->
+<section id="download">
+  <h2>Download</h2>
+  <p>The ontology is available in multiple serialisation formats:</p>
+  <div class="downloads">
+    <a class="dl-card" href="ontology/ontocaad.ttl">
+      <div class="format">.ttl</div>
+      <div class="desc">Turtle (primary)</div>
+    </a>
+    <a class="dl-card" href="ontology/ontocaad.rdf">
+      <div class="format">.rdf</div>
+      <div class="desc">RDF/XML</div>
+    </a>
+    <a class="dl-card" href="ontology/ontocaad.jsonld">
+      <div class="format">.jsonld</div>
+      <div class="desc">JSON-LD</div>
+    </a>
+    <a class="dl-card" href="ontology/ontocaad.owl">
+      <div class="format">.owl</div>
+      <div class="desc">OWL/XML</div>
+    </a>
+  </div>
+  <p style="font-size:0.85rem; color:var(--muted);">
+    Permanent URI: <code>https://w3id.org/ontocaad</code> — supports content negotiation. Request <code>text/turtle</code>, <code>application/rdf+xml</code>, or <code>application/ld+json</code>.
+  </p>
+</section>
+
+<!-- ==================== CLASSES ==================== -->
+<section id="classes">
+  <h2>Classes</h2>
+
+  <h3>Four Foundation Classes</h3>
+  <div class="class-grid">
+    <div class="class-card foundation">
+      <h4>Feature <span class="ind-count">9</span></h4>
+      <p>Embedded design features within artefacts — the building blocks for design decisions. Style, texture, geometry, spatial relationships, feeling, lighting, details, materiality, colour scheme.</p>
+    </div>
+    <div class="class-card foundation">
+      <h4>Artefact</h4>
+      <p>A design artefact with typed properties: artefact type, data type, digital/iterative/external flags, embedded features, creator, and design stage.</p>
+    </div>
+    <div class="class-card actor">
+      <h4>Actor</h4>
+      <p>Superclass for <code>Person</code> and <code>Agent</code>. Can create, interpret, reframe, reason, make, and implement.</p>
+    </div>
+    <div class="class-card decision">
+      <h4>DesignDecision</h4>
+      <p>A decision with arguments for/against. Updates ProjectState when implemented.</p>
+    </div>
+  </div>
+
+  <h3>Actor Hierarchy</h3>
+  <div class="class-grid">
+    <div class="class-card actor">
+      <h4>Person</h4>
+      <p>Human participant with a Role. Uses deductive, inductive, or abductive reasoning. Incorporates tacit and embodied knowledge.</p>
+    </div>
+    <div class="class-card actor">
+      <h4>Agent</h4>
+      <p>Collaborative AI agent with AgentRole, DataType, and feature specialisation. Reasoning follows the epistemic pipeline.</p>
+    </div>
+  </div>
+
+  <h3>Decision Hierarchy</h3>
+  <div class="class-grid">
+    <div class="class-card decision">
+      <h4>DesignProject</h4>
+      <p>State machine: current state, current stage, requirements list. Captures the iterative nature of design.</p>
+    </div>
+    <div class="class-card decision">
+      <h4>ProjectState</h4>
+      <p>Version tracker. Updated when a DesignDecision is implemented.</p>
+    </div>
+    <div class="class-card decision">
+      <h4>DesignProblem</h4>
+      <p>A requirement + intention + related features. Contains a DesignDecision.</p>
+    </div>
+  </div>
+
+  <h3>Enumeration Classes</h3>
+  <div class="class-grid">
+    <div class="class-card enum"><h4>ArtefactType <span class="ind-count">13</span></h4><p>Floorplan, section, 3D model, sketch, moodboard, rendering, generated image, etc.</p></div>
+    <div class="class-card enum"><h4>DataType <span class="ind-count">5</span></h4><p>Visual-raster, visual-vectorial, textual, graph, numerical.</p></div>
+    <div class="class-card enum"><h4>DesignStage <span class="ind-count">4</span></h4><p>Pre-design, sketch design, preliminary design, final design.</p></div>
+    <div class="class-card enum"><h4>Role <span class="ind-count">4</span></h4><p>Designer, manager, client, engineer.</p></div>
+    <div class="class-card enum"><h4>AgentRole <span class="ind-count">4</span></h4><p>Reframer, reasoner, decision maker, implementor.</p></div>
+  </div>
+</section>
+
+<!-- ==================== PROPERTIES ==================== -->
+<section id="properties">
+  <h2>Properties</h2>
+
+  <h3>Object Properties (22)</h3>
+  <table>
+    <thead><tr><th>Property</th><th>Domain</th><th>Range</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td class="prop-name">hasArtefactType</td><td class="cls-name">Artefact</td><td class="range-name">ArtefactType</td><td>Type of artefact</td></tr>
+      <tr><td class="prop-name">hasDataType</td><td class="cls-name">Artefact</td><td class="range-name">DataType</td><td>Data representation</td></tr>
+      <tr><td class="prop-name">hasFeature</td><td class="cls-name">Artefact</td><td class="range-name">Feature</td><td>Embedded design features</td></tr>
+      <tr><td class="prop-name">createdBy</td><td class="cls-name">Artefact</td><td class="range-name">Actor</td><td>Who created this artefact</td></tr>
+      <tr><td class="prop-name">createdInStage</td><td class="cls-name">Artefact</td><td class="range-name">DesignStage</td><td>When it was created</td></tr>
+      <tr><td class="prop-name">hasRole</td><td class="cls-name">Person</td><td class="range-name">Role</td><td>Person's role</td></tr>
+      <tr><td class="prop-name">hasAgentRole</td><td class="cls-name">Agent</td><td class="range-name">AgentRole</td><td>Agent's epistemic role</td></tr>
+      <tr><td class="prop-name">hasAgentDataType</td><td class="cls-name">Agent</td><td class="range-name">DataType</td><td>Data types the agent processes</td></tr>
+      <tr><td class="prop-name">hasSpecialisation</td><td class="cls-name">Agent</td><td class="range-name">Feature</td><td>Feature specialisation</td></tr>
+      <tr><td class="prop-name">currentState</td><td class="cls-name">DesignProject</td><td class="range-name">ProjectState</td><td>Current project version</td></tr>
+      <tr><td class="prop-name">currentStage</td><td class="cls-name">DesignProject</td><td class="range-name">DesignStage</td><td>Current design stage</td></tr>
+      <tr><td class="prop-name">hasRequirement</td><td class="cls-name">DesignProject</td><td class="range-name">DesignProblem</td><td>Project requirements</td></tr>
+      <tr><td class="prop-name">relatedFeature</td><td class="cls-name">DesignProblem</td><td class="range-name">Feature</td><td>Features related to the problem</td></tr>
+      <tr><td class="prop-name">hasDecision</td><td class="cls-name">DesignProblem</td><td class="range-name">DesignDecision</td><td>Decision addressing the problem</td></tr>
+      <tr><td class="prop-name">updatesState</td><td class="cls-name">DesignDecision</td><td class="range-name">ProjectState</td><td>State update on implementation</td></tr>
+      <tr><td class="prop-name">creates</td><td class="cls-name">Actor</td><td class="range-name">Artefact</td><td>Actor creates artefact</td></tr>
+      <tr><td class="prop-name">interprets</td><td class="cls-name">Actor</td><td class="range-name">Feature</td><td>Actor extracts features</td></tr>
+      <tr><td class="prop-name">reframes</td><td class="cls-name">Actor</td><td class="range-name">DesignProblem</td><td>Actor identifies a design problem</td></tr>
+      <tr><td class="prop-name">reasons</td><td class="cls-name">Actor</td><td class="range-name">DesignDecision</td><td>Actor reasons towards a decision</td></tr>
+      <tr><td class="prop-name">makes</td><td class="cls-name">Actor</td><td class="range-name">DesignDecision</td><td>Actor makes a decision</td></tr>
+      <tr><td class="prop-name">implements</td><td class="cls-name">Actor</td><td class="range-name">DesignDecision</td><td>Actor implements a decision</td></tr>
+      <tr><td class="prop-name">interacts</td><td class="cls-name">Actor</td><td class="range-name">Actor</td><td>Actors collaborate (symmetric)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Datatype Properties (8)</h3>
+  <table>
+    <thead><tr><th>Property</th><th>Domain</th><th>Range</th></tr></thead>
+    <tbody>
+      <tr><td class="prop-name">isDigital</td><td class="cls-name">Artefact</td><td><code>xsd:boolean</code></td></tr>
+      <tr><td class="prop-name">isIterative</td><td class="cls-name">Artefact</td><td><code>xsd:boolean</code></td></tr>
+      <tr><td class="prop-name">isExternal</td><td class="cls-name">Artefact</td><td><code>xsd:boolean</code></td></tr>
+      <tr><td class="prop-name">requirement</td><td class="cls-name">DesignProblem</td><td><code>xsd:string</code></td></tr>
+      <tr><td class="prop-name">intention</td><td class="cls-name">DesignProblem</td><td><code>xsd:string</code></td></tr>
+      <tr><td class="prop-name">argumentsFor</td><td class="cls-name">DesignDecision</td><td><code>xsd:string</code></td></tr>
+      <tr><td class="prop-name">argumentsAgainst</td><td class="cls-name">DesignDecision</td><td><code>xsd:string</code></td></tr>
+      <tr><td class="prop-name">stateDescription</td><td class="cls-name">ProjectState</td><td><code>xsd:string</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== ENUMERATIONS ==================== -->
+<section id="enumerations">
+  <h2>Enumerations</h2>
+  <table>
+    <thead><tr><th>Class</th><th>Individuals</th></tr></thead>
+    <tbody>
+      <tr><td class="cls-name">Feature</td><td>Style · Texture · Geometry · Spatial Relationships · Feeling · Lighting · Details · Materiality · Colour Scheme</td></tr>
+      <tr><td class="cls-name">ArtefactType</td><td>Floorplan · Section · Physical Model · Digital 3D Model · Hand Sketch · Mood Board · Rendering · Bill of Quantities · Generated Image · Annotated Diagram · Design Brief · Reference Image · Photograph</td></tr>
+      <tr><td class="cls-name">DataType</td><td>Visual-Raster · Visual-Vectorial · Textual · Graph · Numerical</td></tr>
+      <tr><td class="cls-name">DesignStage</td><td>Pre-Design · Sketch Design · Preliminary Design · Final Design</td></tr>
+      <tr><td class="cls-name">Role</td><td>Designer · Manager · Client · Engineer</td></tr>
+      <tr><td class="cls-name">AgentRole</td><td>Reframer · Reasoner · Decision Maker · Implementor</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== INTERACTIONS ==================== -->
+<section id="interactions">
+  <h2>Class Interactions</h2>
+  <p>The ontology models seven class interactions — thinking processes and auxiliary functions — aligned with epistemic pipelines for both human and machine reasoning:</p>
+
+  <h3>Thinking Processes</h3>
+  <table>
+    <thead><tr><th>Interaction</th><th>Signature</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td class="prop-name">reframes()</td><td>Actor → DesignProblem</td><td>Analyse project, identify requirement, create DesignProblem with features. Epistemic: reframing information.</td></tr>
+      <tr><td class="prop-name">reasons()</td><td>Actor → DesignDecision</td><td>Three steps: (i) create artefact, (ii) interpret features, (iii) summarise arguments. Based on Schön's reflective practitioner.</td></tr>
+      <tr><td class="prop-name">makes()</td><td>Actor → DesignDecision</td><td>Make a decision based on arguments for and against. Epistemic: deciding.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Auxiliary Functions</h3>
+  <table>
+    <thead><tr><th>Interaction</th><th>Signature</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td class="prop-name">interacts()</td><td>Actor ↔ Actor</td><td>Actors collaborate: Person–Person, Person–Agent, Agent–Agent.</td></tr>
+      <tr><td class="prop-name">implements()</td><td>Actor → DesignDecision</td><td>Implement a decision, triggering ProjectState update.</td></tr>
+      <tr><td class="prop-name">creates()</td><td>Actor → Artefact</td><td>Person draws/models; Agent generates/computes.</td></tr>
+      <tr><td class="prop-name">interprets()</td><td>Actor → Feature</td><td>Extract features from artefacts. Textual, visual, or spatial.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== USE-CASE ==================== -->
+<section id="usecase">
+  <h2>Use-Case: Facade Design</h2>
+  <p>
+    The ontology includes instance data demonstrating a complete design workflow for a residential facade in Flanders. A lead designer collaborates with a diffusion model agent to explore materiality and colour variations, ultimately selecting a vermilion red cornice — a creative suggestion the designers stated they would never have proposed themselves.
+  </p>
+  <p>
+    The workflow follows the four thinking processes in sequence: <code>reframe()</code> identifies the facade materiality problem → <code>reason()</code> generates four variations via the diffusion model, with the designer interpreting embedded features → <code>make()</code> selects the vermilion variant based on arguments → <code>implement()</code> updates the project state.
+  </p>
+  <p>
+    <a href="examples/facade-usecase.ttl">Download the use-case instance data →</a>
+  </p>
+
+  <h3>Instantiated Individuals</h3>
+  <table>
+    <thead><tr><th>Individual</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>Project_FacadeDesign</code></td><td class="cls-name">DesignProject</td><td>Residential building, Flanders</td></tr>
+      <tr><td><code>Designer_Lead</code></td><td class="cls-name">Person</td><td>Lead designer, Role: Designer</td></tr>
+      <tr><td><code>Agent_DiffusionModel</code></td><td class="cls-name">Agent</td><td>Reasoner, Visual+Textual, specialises in Style/Texture/Materiality</td></tr>
+      <tr><td><code>Artefact_FacadeVariant3</code></td><td class="cls-name">Artefact</td><td>Vermilion red cornice — the chosen variant</td></tr>
+      <tr><td><code>Decision_VermilionCornice</code></td><td class="cls-name">DesignDecision</td><td>Select vermilion variant based on visual identity arguments</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== CITE ==================== -->
+<section id="cite">
+  <h2>Cite</h2>
+  <pre><span class="comment">@inproceedings</span>{vissers2026ontocaad,
+  <span class="keyword">title</span>     = <span class="string">{OntoCAAD: an empirically grounded Ontology for
+               Collaborative Agentic Architectural Design}</span>,
+  <span class="keyword">author</span>    = <span class="string">{Vissers-Similon, Elien and Dounas, Theodoros}</span>,
+  <span class="keyword">booktitle</span> = <span class="string">{Education and research in Computer Aided
+               Architectural Design in Europe (eCAADe)}</span>,
+  <span class="keyword">year</span>      = <span class="string">{2026}</span>,
+  <span class="keyword">url</span>       = <span class="uri">{https://w3id.org/ontocaad}</span>
+}</pre>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    OntoCAAD © 2026 Elien Vissers-Similon &amp; Theodoros Dounas ·
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> ·
+    <a href="https://github.com/arlav/OntoCAAD">GitHub</a> ·
+    <a href="https://w3id.org/ontocaad">w3id.org/ontocaad</a>
+  </p>
+</footer>
+
+</body>
+</html>
