@@ -1,2 +1,2 @@
 # OntoCAAD
-an ontology for AI Assisted Architectural Design
+Ontology for Collaborative Agentic Architectural Design
